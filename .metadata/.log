@@ -1,0 +1,36 @@
+!SESSION 2023-07-10 17:28:37.129 -----------------------------------------------
+eclipse.buildId=Version 1.11.2
+java.version=11.0.16
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -data D:\Learn school\He_thong_nhung\Embedded-main
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2023-07-10 17:28:42.367
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2023-07-10 17:28:42.442
+!MESSAGE Log4j initialized with config file D:\Learn school\He_thong_nhung\Embedded-main\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2023-07-10 17:28:45.152
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2023-07-10 17:29:20.168
+!MESSAGE Indexed 'ABS_DataSimu' (23 sources, 111 headers) in 3.69 sec: 9,400 declarations; 52,054 references; 2 unresolved inclusions; 36 syntax errors; 188 unresolved names (0.3%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2023-07-10 17:29:22.614
+!MESSAGE Indexed 'ABS_ControlModule' (29 sources, 132 headers) in 2.42 sec: 11,528 declarations; 57,421 references; 2 unresolved inclusions; 145 syntax errors; 190 unresolved names (0.27%)
+!SESSION 2023-07-10 20:49:02.707 -----------------------------------------------
+eclipse.buildId=Version 1.11.2
+java.version=11.0.16
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2023-07-10 20:49:10.218
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2023-07-10 20:49:10.280
+!MESSAGE Log4j initialized with config file D:\Learn school\He_thong_nhung\Embedded-main\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2023-07-10 20:49:15.514
+!MESSAGE Started RMI Server, listening on port 41337

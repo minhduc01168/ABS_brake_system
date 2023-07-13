@@ -43,9 +43,9 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
-TIM_HandleTypeDef htim2;
+TIM_HandleTypeDef htim2;// biến cấu trúc quản lý khối UART
 
-UART_HandleTypeDef huart1;
+UART_HandleTypeDef huart1;//biến cấu trúc quản lý khối UART
 
 /* USER CODE BEGIN PV */
 
@@ -70,16 +70,17 @@ void brakeWithoutABS(void*);
  * 2: ABS button press test
  * 3: no ABS button press test
  * */
-uint8_t vehicleSpeed = 100;
-uint8_t wheelSpeed;
+uint8_t vehicleSpeed = 100;//biến để lưu trữ tốc độ xe
+uint8_t wheelSpeed;//biến để lưu trữ tốc độ bánh xe.
 
-const TickType_t xDelay = 500 / portTICK_PERIOD_MS; // delay for 500ms
+const TickType_t xDelay = 500 / portTICK_PERIOD_MS; // delay for 500ms, xác định thời gian trễ khi sử dụng hàm vTaskDelay()
 float slip_ratio;
 
-TaskHandle_t normalRunning_handle;
+TaskHandle_t normalRunning_handle;//quản lý (task) trong hệ thống thời gian thực FreeRTOS
 TaskHandle_t abs_handle;
 TaskHandle_t no_abs_handle;
 
+//hàm callback được gọi mỗi khi dữ liệu nhận từ UART đã hoàn thành. Hàm sẽ tính toán tỷ lệ trượt và sau đó gọi lại hàm
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 	slip_ratio = abs(vehicleSpeed - wheelSpeed) / (float)vehicleSpeed;
 	HAL_UART_Receive_IT(huart, &wheelSpeed, 1);
@@ -99,7 +100,7 @@ int main(void)
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
+  HAL_Init();//khởi tạo vi điều khiển và các thiết bị ngoại vi
 
   /* USER CODE BEGIN Init */
 
@@ -112,21 +113,23 @@ int main(void)
 
   /* USER CODE END SysInit */
 
+// hàm để khởi tạo các GPIO, Timer và UART
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_TIM2_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 
+//bắt đầu chạy Timer và PWM
   HAL_TIM_Base_Start(&htim2);
   HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_2);
 
 //  HAL_UART_Receive_IT(&huart1, dataFromSensor, 4);
-
+//tạo các tác vụ trong FreeRTOS
   xTaskCreate(normalRunning, "Normal running", 100, NULL, 0, &normalRunning_handle);
   xTaskCreate(brakeWithABS, "Brake with ABS", 100, NULL, 0, &abs_handle);
   xTaskCreate(brakeWithoutABS, "Brake without ABS", 100, NULL, 0, &no_abs_handle);
-
+//bắt đầu lập lịch các tác vụ trong hệ thống thời gian thực
   vTaskStartScheduler();
 
   /* USER CODE END 2 */

@@ -37,13 +37,13 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  16 .debug_macro  000187d0  00000000  00000000  00031708  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   0000f3a4  00000000  00000000  00049ed8  2**0
+ 17 .debug_line   0000f476  00000000  00000000  00049ed8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    000905f0  00000000  00000000  0005927c  2**0
+ 18 .debug_str    000905fe  00000000  00000000  0005934e  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000050  00000000  00000000  000e986c  2**0
+ 19 .comment      00000050  00000000  00000000  000e994c  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00003e34  00000000  00000000  000e98bc  2**2
+ 20 .debug_frame  00003e34  00000000  00000000  000e999c  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -914,11 +914,11 @@ Disassembly of section .text:
  8000a92:	bf00      	nop
 
 08000a94 <HAL_UART_RxCpltCallback>:
-
-TaskHandle_t normalRunning_handle;
+TaskHandle_t normalRunning_handle;//quản lý (task) trong hệ thống thời gian thực FreeRTOS
 TaskHandle_t abs_handle;
 TaskHandle_t no_abs_handle;
 
+//hàm callback được gọi mỗi khi dữ liệu nhận từ UART đã hoàn thành. Hàm sẽ tính toán tỷ lệ trượt và sau đó gọi lại hàm
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
  8000a94:	b590      	push	{r4, r7, lr}
  8000a96:	b083      	sub	sp, #12
@@ -978,7 +978,7 @@ int main(void)
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
+  HAL_Init();//
  8000af6:	f000 fc1b 	bl	8001330 <HAL_Init>
   /* USER CODE BEGIN Init */
 
